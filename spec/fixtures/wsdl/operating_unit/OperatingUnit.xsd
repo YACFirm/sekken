@@ -1,0 +1,110 @@
+<xsd:schema targetNamespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"
+            elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"
+            xmlns:cdm="http://schemas.example.co.uk/cdm/v1"
+            xmlns:common="http://schemas.example.co.uk/osb/common">
+
+  <xsd:import namespace="http://schemas.example.co.uk/osb/common" schemaLocation="common.xsd"/>
+  <xsd:import namespace="http://schemas.example.co.uk/cdm/v1" schemaLocation="Message.xsd"/>
+  <xsd:import namespace="http://schemas.example.co.uk/cdm/v1" schemaLocation="OperatingUnitRef.xsd"/>
+
+  <xsd:element name="GetOpUnitRequest" type="GetOpUnitRequestType"/>
+  <xsd:complexType name="GetOpUnitRequestType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element ref="cdm:OperatingUnitRef"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetOpUnitResponse" type="GetOpUnitResponseType"/>
+  <xsd:complexType name="GetOpUnitResponseType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element name="Outcome" type="xsd:string" />
+      <xsd:element name="OutcomeReason" type="xsd:string" />
+      <xsd:element ref="cdm:OperatingUnitRefs" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="SearchRequest" type="SearchRequestType"/>
+  <xsd:complexType name="SearchRequestType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element name="SearchCriteria">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="OperatingUnitCode" type="xsd:string" minOccurs="0" />
+            <xsd:element name="OperatingUnitTypeCode" type="xsd:string" minOccurs="0" />
+            <xsd:element name="OperatingUnitTypeDesc" type="xsd:string" minOccurs="0" />
+            <xsd:element name="OperatingUnitDesc" type="xsd:string" minOccurs="0" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SearchResponse" type="SearchResponseType"/>
+  <xsd:complexType name="SearchResponseType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element name="Outcome" type="xsd:string" />
+      <xsd:element name="OutcomeReason" type="xsd:string" />
+      <xsd:element ref="cdm:OperatingUnitRefs" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="UpsertOpUnitRequest" type="UpsertOpUnitRequestType"/>
+  <xsd:complexType name="UpsertOpUnitRequestType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element ref="cdm:OperatingUnitRef"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="UpsertOpUnitResponse" type="UpsertOpUnitResponseType"/>
+  <xsd:complexType name="UpsertOpUnitResponseType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element name="Outcome" type="xsd:string" />
+      <xsd:element name="OutcomeReason" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="GetOpUnitCalendarRequest" type="GetOpUnitCalendarRequestType"/>
+  <xsd:complexType name="GetOpUnitCalendarRequestType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element name="OperatingUnitCalendar">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="OperatingUnitCode" type="xsd:string" />
+            <xsd:element name="StartDate" type="xsd:date" />
+            <xsd:element name="EndDate" type="xsd:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetOpUnitCalendarResponse" type="GetOpUnitCalendarResponseType"/>
+  <xsd:complexType name="GetOpUnitCalendarResponseType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element name="Outcome" type="xsd:string" />
+      <xsd:element name="OutcomeReason" type="xsd:string" />
+      <xsd:element ref="cdm:OperatingUnitCalendars" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="UpsertOpUnitCalendarRequest" type="UpsertOpUnitCalendarRequestType"/>
+  <xsd:complexType name="UpsertOpUnitCalendarRequestType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element ref="cdm:OperatingUnitRef" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="UpsertOpUnitCalendarResponse" type="UpsertOpUnitCalendarResponseType"/>
+  <xsd:complexType name="UpsertOpUnitCalendarResponseType">
+    <xsd:sequence>
+      <xsd:element ref="cdm:Header"/>
+      <xsd:element name="Outcome" type="xsd:string" />
+      <xsd:element name="OutcomeReason" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

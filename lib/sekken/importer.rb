@@ -21,14 +21,8 @@ class Sekken
         @schemas.push(document.schemas)
       end
 
-      # resolve xml schema imports
-      import_schemas do |schema_location|
-        @logger.info("Resolving XML schema import #{schema_location.inspect}.")
-        
-        import_document(schema_location) do |document|
-          @schemas.push(document.schemas)
-        end
-      end
+      # resolve xml schema imports recursively
+      import_schemas(@schemas)
       
       import_included_schemas do |schema_location|
         @logger.info("Resolving included schema  #{schema_location.inspect}.")
@@ -56,7 +50,6 @@ class Sekken
       @import_locations << location
 
       document = WSDL::Document.new Nokogiri.XML(xml), @schemas
-      
       block.call(document)
       
       # resolve wsdl imports
@@ -66,18 +59,20 @@ class Sekken
       end
     end
 
-    def import_schemas
-      @schemas.each do |schema|
+    def import_schemas(schemas)
+      schemas.each do |schema|
         schema.imports.each do |namespace, schema_location|
           next unless schema_location
-
           unless @resolver.can_resolve? schema_location
             @logger.warn("Skipping XML Schema import #{schema_location.inspect}.")
             next
           end
-
           # TODO: also skip if the schema was already imported
-          yield(schema_location)
+          @logger.info("Resolving XML schema import #{schema_location.inspect}.")
+          import_document(schema_location) do |document|
+            import_schemas(document.schemas)
+            @schemas.push(document.schemas)
+          end
         end
       end
     end
@@ -91,6 +86,5 @@ class Sekken
         end
       end
     end
-
   end
 end

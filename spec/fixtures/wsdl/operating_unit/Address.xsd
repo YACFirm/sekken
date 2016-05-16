@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://schemas.example.co.uk/cdm/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.example.co.uk/cdm/v1" elementFormDefault="qualified">
+	<xsd:element name="AddressDetails" type="tns:AddressDetailsType"/>
+	<xsd:complexType name="AddressDetailsType">
+		<xsd:sequence>
+			<xsd:element name="AddressDetail" type="tns:AddressDetailType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AddressDetail" type="tns:AddressDetailType"/>
+	<xsd:complexType name="AddressDetailType">
+					<xsd:attribute name="xxx" type="xsd:string"/> 
+		<xsd:sequence>
+			<xsd:element name="AddressLine1" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="AddressLine2" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Town" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="County" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Postcode" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Country2AlphaCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>This is in ISO 3166-1 alpha-2, e.g. GB for the UK</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GeoLatitude" type="xsd:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="GeoLongitude" type="xsd:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="ServiceCentreOpUnitCode" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>                        
+			<xsd:element name="RequestBy" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="LocationID" type="xsd:integer" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Cleansed3rdPartyAddressId" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="PAFAddressKey" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="PAFAddressOrganisaton" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="PAFDeliveryPoint" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://schemas.example.co.uk/cdm/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.example.co.uk/cdm/v1" elementFormDefault="qualified">
+	<xsd:element name="ContactDetails" type="tns:ContactDetailsType"/>
+	<xsd:complexType name="ContactDetailsType">
+		<xsd:sequence>
+			<xsd:element name="ContactDetail" type="tns:ContactDetailType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ContactDetail" type="tns:ContactDetailType"/>
+	<xsd:complexType name="ContactDetailType">
+		<xsd:sequence>
+			<xsd:element name="Forename" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Surname" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Title" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="JobTitle" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Telephone" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Mobile" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="HomeTelephone" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="Email" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="OrganisationName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xsd:element name="DepartmentName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
