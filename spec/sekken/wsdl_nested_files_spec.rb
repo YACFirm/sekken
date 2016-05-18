@@ -22,4 +22,35 @@ describe Sekken::WSDL do
       expect{svc.example_body}.to_not raise_error
     end
   end
+
+  context 'with multiple levels of import' do
+    let(:service) {'OperatingUnitBindingQSService'}
+    let(:binding) {'OperatingUnitBindingQSPort'}
+    let(:client) {Sekken.new fixture('wsdl/operating_unit/OperatingUnit.wsdl')}
+    let(:operations) {["getOpUnit", "search", "upsertOpUnit", "getOpUnitCalendar", "upsertOpUnitCalendar"]}
+    it 'should return list of expected operations' do
+      operation = client.operation(service,binding, "getOpUnit");
+      expect(client.operations(service, binding)).to eq(operations)
+    end
+
+    it 'all operations should return a example body' do
+      client.operations(service, binding).each do |operation|
+        expect(client.operation(service,binding, operation).example_body).to be_a(Hash)
+      end
+    end
+
+    it 'all operations should return a example header' do
+      client.operations(service, binding).each do |operation|
+        expect(client.operation(service,binding, operation).example_header).to be_a(Hash)
+      end
+    end
+
+    it 'should not raise an error when building a request payload' do
+      client.operations(service, binding).each do |operation|
+        op = client.operation(service,binding, operation)
+        op.body = op.example_body
+        expect {op.build}.not_to raise_error
+      end
+    end
+  end
 end

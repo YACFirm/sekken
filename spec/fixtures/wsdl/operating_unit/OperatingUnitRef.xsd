@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://schemas.example.co.uk/cdm/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://schemas.example.co.uk/cdm/v1" elementFormDefault="qualified">
+  <xsd:include schemaLocation="Address.xsd"/>
+  <xsd:include schemaLocation="Contact.xsd"/>
+  <xsd:include schemaLocation="Message.xsd"/>
+  <xsd:include schemaLocation="OperatingUnitXRef.xsd"/>
+  <xsd:complexType name="OperatingUnitRefsMessage">
+    <xsd:sequence>
+      <xsd:element name="Header" type="tns:CanonicalHeaderType" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="OperatingUnitRefs" type="tns:OperatingUnitRefsType" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OperatingUnitRefs" type="tns:OperatingUnitRefsType"/>
+  <xsd:complexType name="OperatingUnitRefsType">
+    <xsd:sequence>
+      <xsd:element name="OperatingUnitRef" type="tns:OperatingUnitRefType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OperatingUnitRef" type="tns:OperatingUnitRefType"/>
+  <xsd:complexType name="OperatingUnitRefType">
+    <xsd:sequence>
+      <xsd:element name="OperatingUnitCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="OperatingUnitTypeCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="OperatingUnitDesc" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="DepotCode" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="RegionCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="ParentOperatingUnitCode" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="OperatingUnitAddress" type="tns:AddressDetailType" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="OperatingUnitContact" type="tns:ContactDetailType" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="MondayOpenTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="MondayCloseTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="TuesdayOpenTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="TuesdayCloseTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="WednesdayOpenTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="WednesdayCloseTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="ThursdayOpenTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="ThursdayCloseTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="FridayOpenTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="FridayCloseTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="SaturdayOpenTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="SaturdayCloseTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="SundayOpenTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="SundayCloseTime" type="xsd:time" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xsd:element name="OperatingUnitTypeRef" type="tns:OperatingUnitTypeRefType" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="OperatingUnitCalendars" type="tns:OperatingUnitCalendarsType" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="OperatingUnitXRefs" type="tns:OperatingUnitXRefsType" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OperatingUnitCalendars" type="tns:OperatingUnitCalendarsType"/>
+  <xsd:complexType name="OperatingUnitCalendarsType">
+    <xsd:sequence>
+      <xsd:element name="OperatingUnitCalendar" type="tns:OperatingUnitCalendarType" minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OperatingUnitCalendar" type="tns:OperatingUnitCalendarType"/>
+  <xsd:complexType name="OperatingUnitCalendarType">
+    <xsd:sequence>
+      <xsd:element name="CalendarDate" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="WorkingDayInd" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OperatingUnitTypeRefs" type="tns:OperatingUnitTypeRefsType"/>
+  <xsd:complexType name="OperatingUnitTypeRefsType">
+    <xsd:sequence>
+      <xsd:element name="OperatingUnitTypeRef" type="tns:OperatingUnitTypeRefType" minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OperatingUnitTypeRef" type="tns:OperatingUnitTypeRefType"/>
+  <xsd:complexType name="OperatingUnitTypeRefType">
+    <xsd:sequence>
+      <xsd:element name="OperatingUnitTypeCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="OperatingUnitTypeDesc" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="SortCentreInd" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="ServiceCentreInd" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="SubServiceCentreInd" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

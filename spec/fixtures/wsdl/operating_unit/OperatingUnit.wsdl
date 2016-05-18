@@ -1,0 +1,120 @@
+<wsdl:definitions name="RetrieveParcelEventRef" 
+                  targetNamespace="http://services.example.co.uk/fulfilment/pres/v1/operatingunit" 
+                  xmlns:tns="http://services.example.co.uk/fulfilment/pres/v1/operatingunit" 
+                  xmlns:types="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit" 
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+     
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit" schemaLocation="OperatingUnit.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetOpUnitRequestMessage">
+        <wsdl:part name="GetOpUnitRequest" element="types:GetOpUnitRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOpUnitResponseMessage">
+        <wsdl:part name="GetOpUnitResponse" element="types:GetOpUnitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SearchRequestMessage">
+        <wsdl:part name="SearchRequest" element="types:SearchRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SearchResponseMessage">
+        <wsdl:part name="SearchResponse" element="types:SearchResponse"/>
+    </wsdl:message>
+    <wsdl:message name="UpsertOpUnitRequestMessage">
+        <wsdl:part name="UpsertOpUnitRequest" element="types:UpsertOpUnitRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpsertOpUnitResponseMessage">
+        <wsdl:part name="UpsertOpUnitResponse" element="types:UpsertOpUnitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetOpUnitCalendarRequestMessage">
+        <wsdl:part name="GetOpUnitCalendarRequest" element="types:GetOpUnitCalendarRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOpUnitCalendarResponseMessage">
+        <wsdl:part name="GetOpUnitCalendarResponse" element="types:GetOpUnitCalendarResponse"/>
+    </wsdl:message>
+    <wsdl:message name="UpsertOpUnitCalendarRequestMessage">
+        <wsdl:part name="UpsertOpUnitCalendarRequest" element="types:UpsertOpUnitCalendarRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpsertOpUnitCalendarResponseMessage">
+        <wsdl:part name="UpsertOpUnitCalendarResponse" element="types:UpsertOpUnitCalendarResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="process_ptt">
+        <wsdl:operation name="getOpUnit">
+            <wsdl:input message="tns:GetOpUnitRequestMessage"/>
+            <wsdl:output message="tns:GetOpUnitResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="search">
+            <wsdl:input message="tns:SearchRequestMessage"/>
+            <wsdl:output message="tns:SearchResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="upsertOpUnit">
+            <wsdl:input message="tns:UpsertOpUnitRequestMessage"/>
+            <wsdl:output message="tns:UpsertOpUnitResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOpUnitCalendar">
+            <wsdl:input message="tns:GetOpUnitCalendarRequestMessage"/>
+            <wsdl:output message="tns:GetOpUnitCalendarResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="upsertOpUnitCalendar">
+            <wsdl:input message="tns:UpsertOpUnitCalendarRequestMessage"/>
+            <wsdl:output message="tns:UpsertOpUnitCalendarResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="process_binding" type="tns:process_ptt">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getOpUnit">
+            <soap:operation style="document" soapAction="http://services.example.co.uk/fulfilment/pres/v1/operatingunit#getOpUnit"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="search">
+            <soap:operation style="document" soapAction="http://services.example.co.uk/fulfilment/pres/v1/operatingunit#search"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="upsertOpUnit">
+            <soap:operation style="document" soapAction="http://services.example.co.uk/fulfilment/pres/v1/operatingunit#upsertOpUnit"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOpUnitCalendar">
+            <soap:operation style="document" soapAction="http://services.example.co.uk/fulfilment/pres/v1/operatingunit#getOpUnitCalendar"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="upsertOpUnitCalendar">
+            <soap:operation style="document" soapAction="http://services.example.co.uk/fulfilment/pres/v1/operatingunit#upsertOpUnitCalendar"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://schemas.example.co.uk/fulfilment/pres/v1/operatingunit"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="OperatingUnitBindingQSService">
+        <wsdl:documentation>OSB Service</wsdl:documentation>
+        <wsdl:port binding="wsdl:process_binding" name="OperatingUnitBindingQSPort">
+            <soap:address location="http://example.com/some/route/to/services"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
