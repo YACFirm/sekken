@@ -1,28 +1,16 @@
-# Sekken
+#This is a fork from savonrb/sekken
 
-Heavy metal SOAP client
+With a few enhancements like:
 
-[Documentation](http://savonrb.com) | [RDoc](http://rubydoc.info/gems/savon) |
-[Mailing list](https://groups.google.com/forum/#!forum/savonrb) | [Twitter](http://twitter.com/savonrb)
+allow local files in schema importer - Mario Manno
+if nsid is nil, find the type in the xmlns namespace - dedsm
+collect attributes also needs the nil nsid check - dedsm
+Support for relative paths - saulm
+Improvements on resolver and importer - saulm
+Fix error on base_file_path creation - saulm
+Resolve includes on XSD - saulm
+Add Sabre wsdl/xsd - saulm
+fix for Schema imports with N level of nesting. - Andrew Whitmore
 
-[![Build Status](https://secure.travis-ci.org/savonrb/sekken.png?branch=master)](http://travis-ci.org/savonrb/sekken)
-[![Gem Version](https://badge.fury.io/rb/sekken.png)](http://badge.fury.io/rb/sekken)
-[![Code Climate](https://codeclimate.com/github/savonrb/sekken.png)](https://codeclimate.com/github/savonrb/sekken)
-[![Coverage Status](https://coveralls.io/repos/savonrb/sekken/badge.png?branch=master)](https://coveralls.io/r/savonrb/sekken)
 
-
-## Version 3
-
-**Status: Unstable.** Sekken is currently under development and available for testing on GitHub.
-Use this version if you can handle changes and want to provide feedback.
-
-Sekken is still in a very early stage, but [there is some documentation!](http://savonrb.com/version3/)
-
-## Give back
-
-If you're using Sekken and you or your company is making money from it, then please consider
-donating via [Gittip](https://www.gittip.com/tjarratt/) so that I can continue to improve it.
-
-[![donate](donate.png)](https://www.gittip.com/tjarratt/)
-
-Donate icon from the [Noun Project](http://thenounproject.com/noun/donate/#icon-No285).
+Most of this changes were made to support the Sabre SOAP API's
